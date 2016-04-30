@@ -1,11 +1,12 @@
 require 'minitest/autorun'
 require 'benchmark'
 
+#simple caculation of a row in pascals triangle by caculating the triangle recursively
 def pascal(n)
   return [1] if n == 0
   previous_row = pascal(n-1) #recursion, probably slow
-  next_row = [0] + previous_row + [0] #like the video. it also avoids dealing with nils
-  return next_row.each_cons(2).map{|a, b| a + b }
+  row = [0] + previous_row + [0] #like the video. it also avoids dealing with nils
+  return row.each_cons(2).map{|a, b| a + b }
 end
 
 class TestPascal < Minitest::Test
