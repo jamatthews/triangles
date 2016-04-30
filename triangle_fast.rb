@@ -7,7 +7,7 @@ def pascal(n)
   row = []
   k=0
   until(k > n/2) do
-    result = element(n,k)
+    result = element(n,k,row)
     row[k] = result
     #rows are symetrical so complete the corresponsing element
     row[n-k] = result
@@ -17,10 +17,10 @@ def pascal(n)
 end
 
 #using the identity from https://en.wikipedia.org/wiki/Pascal's_triangle#Calculating_a_row_or_diagonal_by_itself
-def element(n,k)
+def element(n,k,row)
   return 1 if k == 0 or k==n
-  previous_element = element(n,k-1)
-  return  previous_element * (n+1-k)/k #recursion again, which is probably why it's no faster. You've still got n method calls.
+  previous_element = row[k-1] #we can
+  return  previous_element * (n+1-k)/k
 end
 
 
